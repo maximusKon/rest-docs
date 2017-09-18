@@ -1,1 +1,5 @@
 include::{snippets}/index/curl-request.adoc[]
+
+include::{snippets}/index/response-body.adoc[]
+
+include::{snippets}/index/response-fields.adoc[]

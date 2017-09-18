@@ -7,6 +7,7 @@ import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.restdocs.JUnitRestDocumentation
+import org.springframework.restdocs.payload.PayloadDocumentation.*
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration
 import org.springframework.test.context.ContextConfiguration
@@ -46,7 +47,12 @@ class CarControllerTest {
     fun getCar() {
         mockMvc!!.perform(get("/getCar/1"))
                 .andExpect(status().isOk)
-                .andDo(document("index"))
+                .andDo(document("index",
+                        responseFields(
+                                fieldWithPath("id").description("Идентификатор"),
+                                fieldWithPath("brand").description("Марка машины")
+                        ))
+                )
     }
 
 }
